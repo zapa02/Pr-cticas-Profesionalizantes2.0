@@ -1,0 +1,113 @@
+Actividad 1: Listas y Slicing
+
+Dada la siguiente lista en Python: 
+
+frutas = [“manzana”, “mango”, “frutilla”, “naranja”, “sandia”, “durazno”, “pera”, “mandarina”, “melon”]
+
+#A)Imprimir 2 veces el elemento “sandía”, accediendo desde su índice positivo y negativo.
+#b)Imprimir la lista desde “mango” hasta el final.
+#c)Imprimir el rango que va desde “frutilla” hasta “pera”.
+#D)Imprimir la lista al revés
+
+A) Frutas = ['manzana', 'mango', 'frutilla', 'naranja', 'sandia', 'durazno', 'pera', 'mandarina', 'melon']
+print(Frutas[4])
+print(Frutas[-5])
+
+B)Frutas = ['manzana', 'mango', 'frutilla', 'naranja', 'sandia', 'durazno', 'pera', 'mandarina', 'melon']
+print(Frutas[1:])
+
+C)Frutas = ['manzana', 'mango', 'frutilla', 'naranja', 'sandia', 'durazno', 'pera', 'mandarina', 'melon']
+print(Frutas[2:-2])
+
+D)Frutas = ['manzana', 'mango', 'frutilla', 'naranja', 'sandia', 'durazno', 'pera', 'mandarina', 'melon']
+print(Frutas[::-1])
+
+Actividad 2: Listas y string
+Escribir una función que reciba por parámetro una dirección de mail y retorne el nombre de usuario. El nombre de usuario es lo que se encuentra a la izquierda del @.
+
+Mail = input('ingrese un correo: ')
+def Usuario(Mail):
+    Gmail = Mail.split("@")
+    return Gmail[0]
+print('El nombre del usuario es: ' , Usuario(Mail))
+
+Actividad 3: Listas y posiciones
+Escribir una función que reciba por parámetro una lista de números positivos y devuelva la posición del elemento máximo.
+
+numero= [69,11,70,29,53,12,30]
+def maximo(numero):
+	maxi=numero[0]
+	Posicion=0
+	for i in range (len(numero)):
+		if maxi<=numero[i]:
+			maxi=numero[i]
+			Posicion=i
+	return Posicion
+print(maximo(numero))
+		
+Actividad 4: Tuplas
+Escribir una función que pase a escala de grises el color codificado en los elementos de la tupla recibida por parámetro. La tupla representa un pixel, en donde el elemento 0 es el R, el 1 el G y el 2 el B. La función debe retornar la intensidad en escala de grises que es el promedio de la intensidad de cada canal R, G y B.
+
+tupla=(0.6,0.3,0.4)
+def escala(tupla):
+	suma=sum(tupla)/3
+	return suma
+print(escala(tupla))
+
+Actividad 5: Diccionarios
+Completar el siguiente programa que lee desde el teclado los datos de una persona: DNI y nombre, terminando cuando se ingresa el DNI 0. Se desea que al finalizar el ingreso de datos se impriman todos los nombres.
+
+DNI = int(input("Ingrese un DNI: "))
+Personas={}
+while DNI != 0:
+    Nombre = input("IngresE un Nombre: ")
+    Personas[DNI]=Nombre
+    DNI = int(input("Ingrese un DNI: (0 para terminar) "))
+
+for p in Personas:
+  print("nombre:", Personas[p])
+    
+ Actividad 6: Crear un diccionario en una función
+Escribir una función que reciba una lista de números y retorne un diccionario con su promedio, el número máximo y mínimo.
+
+numeros= [44,11,15,29,53,12,30]
+def lista(numeros):
+	Max=numeros[0]
+	Min=numeros[0]
+	pro =sum(numeros)/len(numeros)
+	for i in numeros:
+		if i < Min:
+			Min=i
+		if i >Max:
+			Max=i
+	Prom={'promedio':pro, 'maximo':Max, 'minimo':Min}
+	return Prom
+print (lista(numeros))   
+
+Actividad 7: Usar un diccionario en una función
+Dado el siguiente diccionario: 
+listado =  {"Cantantes":["Charly García", "Juan Carlos Baglietto", "David Lebon", "Pappo", "Celeste Carballo", "Patricia Sosa"], "Deportistas":["Lionel Messi", "Juan Martin Del Potro", "Paula Pareto", "Georgina Bardach", "Jose Meolans"], "Artistas":["Ricardo Darín", "Pablo Echarri", "Nancy Dupláa", "Julieta Diaz"] }
+Escribir una función que reciba el listado (diccionario) por parámetro e imprima todos los artistas
+
+lista =  {'Cantantes':['Charly García', 'Juan Carlos Baglietto', 'David Lebon', 'Pappo', 'Celeste Carballo', 'Patricia Sosa'], "Deportistas":['Lionel Messi', 'Juan Martin Del Potro', 'Paula Pareto', 'Georgina Bardach', 'Jose Meolans'], 'Artistas':['Ricardo Darín', 'Pablo Echarri', 'Nancy Dupláa', 'Julieta Diaz'] }
+def listDArt(lista):
+	simbolo="******************"
+	print(simbolo)
+	print('Artistas')
+	print(simbolo)
+	for i in lista["Artistas"]:
+		print(i)
+	return 
+listDArt(lista)
+
+Actividad 8: Diccionarios
+Escribir una función que reciba por parámetro una fecha en formato dd/mm/aaaa y retorne la misma fecha en formato dd de <mes> de aaaa donde <mes> es el nombre del mes.
+
+meses = {1:'enero', 2:'febrero', 3:'marzo', 4:'abril', 5:'mayo', 6:'junio', 7:'julio', 8:'agosto', 9:'septiembre', 10:'octubre', 11:'noviembre', 12:'diciembre'}
+fecha = input('introduce una fecha en formato dd/mm/aaaa: ')
+def calendario(fecha):
+    fecha = fecha.split('/')
+    dia =[fecha[0] + ' de ' + meses[int(fecha[1])]+ ' de '+ fecha[2]]
+    sincorchete= (', '.join(dia))
+    return sincorchete
+print(calendario(fecha))
