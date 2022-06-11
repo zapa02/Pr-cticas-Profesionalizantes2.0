@@ -1,0 +1,87 @@
+Actividad:
+Importar usando pandas el dataset de los vacunados que se puede obtener del siguiente link: https://www.datos.gob.ar/dataset/salud-vacunas-contra-covid-19-dosis-aplicadas-republica-argentina/archivo/salud_b4684dd9-3cb7-45f7-9c0e-086550013e22
+
+a) Mostrar el tipo de dato de cada columna.
+
+b) Mostrar las dimenciones del dataframe.
+
+c) Mostrar la cantidad de valores nulos que tiene cada columna.
+
+d) Mostrar las 10 primeras filas del dataframe.
+
+e) Mostrar las 5 últimas filas del dataframe.
+
+f) Mostrar las 10 filas aleatorias del dataframe.
+
+g) Mostrar el nombre de la vacuna y la cantidad de vacunados con la primera dosis de la provincia de Córdoba.
+
+h) Mostrar los distintos tipos de vacunas que se aplicaron.
+
+i) Mostrar en un gráfico la cantidad de vacunados con la primera dosis por cada vacuna (Suputnik, Astraseneca, Sinophrm, etc.)
+
+j) Mostrar en un gráfico la cantidad de vacunados con la segunda dosis en cada provincia o jurisdicción.
+import pandas as pd
+covid = pd.read_csv("Covid19VacunasAgrupadas.csv", error_bad_lines=False)
+
+EJERCICIOS RESUELTOS:
+
+#A)Mostrar el tipo de dato de cada columna:
+covid.info()
+
+#B)Mostrar las dimenciones del dataframe.
+print(" Dimenciones del dataframe: ")
+covid.shape
+
+#C)Mostrar la cantidad de valores nulos que tiene cada columna.
+covid.isnull().sum()
+
+#D)Mostrar las 10 primeras filas del dataframe.
+covid[["jurisdiccion_codigo_indec", "jurisdiccion_nombre", "vacuna_nombre", "primera_dosis_cantidad","segunda_dosis_cantidad"]].head(10)
+
+#E)Mostrar las 5 últimas filas del dataframe.
+covid[["jurisdiccion_codigo_indec", "jurisdiccion_nombre", "vacuna_nombre", "primera_dosis_cantidad", "segunda_dosis_cantidad"]].tail()
+
+#F)Mostrar las 10 filas aleatorias del dataframe.
+covid.sample(10)
+
+#G) Mostrar el nombre de la vacuna y la cantidad de vacunados con la primera dosis de la provincia de Córdoba.
+covid[covid["jurisdiccion_nombre"] == "Córdoba" ].groupby("vacuna_nombre")["primera_dosis_cantidad"].sum()
+
+# H) Mostrar los distintos tipos de vacunas que se aplicaron.
+covid['vacuna_nombre'].unique()
+import pandas as pd
+covid = pd.read_csv("Covid19VacunasAgrupadas.csv", error_bad_lines=False) 
+import plotly.express as px 
+import plotly.io as pio  #Templates
+
+#I)Mostrar en un gráfico la cantidad de vacunados con la primera dosis por cada vacuna (Suputnik, Astraseneca, Sinophrm, etc.)
+
+df_vacunas = covid.groupby(["vacuna_nombre"])["primera_dosis_cantidad"].sum().reset_index(name="cantidad")
+
+df_vacunas
+fig = px.bar(df_vacunas, x="vacuna_nombre", y="cantidad",
+            color="cantidad",
+            template="simple_white",
+            labels={"cantidad":"Cantidad de primera dosis", "vacuna_nombre":"Vacunas"},
+            title="Cantidad de Vacunados con la Primer dosis",
+            height=600
+)
+fig.show()
+import pandas as pd
+covid = pd.read_csv("Covid19VacunasAgrupadas.csv", error_bad_lines=False)
+import plotly.express as px 
+import plotly.io as pio  #Templates
+
+# J) Mostrar en un gráfico la cantidad de vacunados con la segunda dosis en cada provincia o jurisdicción.
+
+df_vacunas = covid.groupby(["jurisdiccion_nombre"])["segunda_dosis_cantidad"].sum().reset_index(name="cantidad")
+
+df_vacunas
+fig = px.bar(df_vacunas, x="jurisdiccion_nombre", y="cantidad",
+            color="cantidad",
+            template="simple_white",
+            labels={"cantidad":"Cantidad de segunda dosis", "jurisdiccion_nombre":"provincias"},
+            title="Cantidad de segunda dosis por Provincia ",
+            height=600
+)
+fig.show()
