@@ -1,0 +1,69 @@
+Actividad 1: Operaciones con String
+Escribir un programa que ingrese una frase por el teclado y luego imprime por consola:
+
+a. La longitud de la frase.
+frase= input("ingrese una frase:")
+(print("la longitud de la frase es:"),print(str(len(frase))) )
+b. La frase en mayúsculas.
+frase= input("ingrese una frase:")
+print(frase.upper())
+
+c. La frase en minúsculas.
+frase= input("ingrese una frase:")
+print(frase.lower())
+
+d. La frase con los espacios reemplazados por guiones.
+frase= input("ingrese una frase:")
+Guion= frase.replace("", "-")
+print(Guion)
+
+e. Las dos primeras y las dos últimas letras de la frase.
+frase= input("ingrese una frase:")
+pri = (frase[0:2])
+ult = (frase[-2:])
+print( str (pri) + str (ult))
+
+f. La cantidad de vocales que tiene la frase.
+frase= input("ingrese una frase:")
+Cant_vocales= 'La cantidad de vocales que tiene la frase es'
+voc = ['a','e','i','o','u']
+cont=0
+for i in voc:
+for a in frase:
+if(i==a):
+cont+=1
+print (Cant_vocales + " " + str(cont))
+
+Actividad 2
+Condicionales compuestos
+
+Escriba un programa que determine y muestre por consola si un año ingresado por teclado es
+bisiesto o no.
+año = int(input("ingrese un año:") )
+
+if año % 4 != 0:
+print("el año",año,"No es bisiesto")
+elif año % 4 == 0 and año % 100 != 0:
+print("el año",año,"Es bisiesto")
+elif año % 4 == 0 and año % 100 == 0 and año % 400 != 0:
+print("el año",año,"No es bisiesto")
+elif año % 4 == 0 and año % 100 == 0 and año % 400 == 0:
+print("el año",año,"Es bisiesto")
+
+Actividad 3
+Bucles
+
+B. Resolver usando un while
+import random
+a=0
+numero = random.randrange(a, 50, 2)
+while a <= numero:
+if a%2==0:
+print(a)
+a=a+1
+
+A. Resolver usando un for
+import random
+N= random.randrange(0, 50, 2)
+for N in range(0, N, 2):
+print(N)
