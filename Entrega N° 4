@@ -1,0 +1,101 @@
+Ejercicio1:: Listas y String
+
+A. Frutas = ['Manzana', 'Mango', 'Frutilla', 'Naranja', 'Sandía',
+'Durazno', 'Pera', 'Mandarina', 'Melón']
+for i in Frutas:
+print(i)
+
+B. Frutas = ['Manzana', 'Mango', 'Frutilla', 'Naranja', 'Sandía',
+'Durazno', 'Pera', 'Mandarina', 'Melón']
+Frutas.append("cereza")
+print(Frutas)
+
+C. Frutas1 = ['Manzana', 'Mango', 'Frutilla', 'Naranja', 'Sandía',
+'Durazno', 'Pera', 'Mandarina', 'Melón']
+Frutas2 = ['Arándano', 'Kiwi', 'Pelón', 'Higo']
+Frutas = Frutas1 + Frutas2
+print(Frutas)
+
+D. Frutas = ['Manzana', 'Mango', 'Frutilla', 'Naranja', 'Sandía',
+'Durazno', 'Pera', 'Mandarina', 'Melón']
+MultiFrutas= []
+for M in Frutas:
+if M[0]=='M':
+MultiFrutas.append(M)
+print(MultiFrutas)
+
+Ejercicio 2: Funciones
+
+Base = int(input("Ingrese la base: "))
+
+Altura = int(input("Ingrese la altura: "))
+
+def area(Base, Altura):
+return Base * Altura / 2
+
+s = area(Base, Altura)
+
+print(s)
+
+Ejercicio 3: Funciones y promedio
+
+Numeros=[] 
+
+TotalDeN=int(input('cuántos números desea ingresar a la lista: ')) 
+
+for i in range(0, TotalDeN): 
+		
+		Numeros.append(int(input("Ingrese un número: "))) 
+		
+def Promedio(Numeros): 
+		
+	return sum(Numeros) / float(len(Numeros)) 
+	
+print ('El promedio de los números que ingresó es: ',Promedio (Numeros)) 
+
+
+Ejercio 4: Funciones y factorial
+
+def Funcion(N):
+    Factorial = 1
+    while N > 1:
+        Factorial*= N
+        N-= 1
+    return Factorial
+print(Funcion(int(input("Ingrese un numero: "))))
+
+Ejercicio 5: Funciones y polígonos
+
+import turtle
+def tortu(longitud, Cant):
+for i in range (Cant):
+turtle.forward(longitud)
+turtle.right(360/Cant)
+tortu((int(input("Ingrese la longitud: "))), (int(input("Ingrese la
+cantidad de lados: "))))
+
+Ejercicio 6: Palabras palíndromas
+
+def Palindroma(str):
+	 
+	for i in range(0, int(len(str)/2)): 
+		if str[i] != str[len(str)-i-1]: 
+			
+			return False 
+			
+		return True 
+frase = (input('ingrese una frase: ')) 
+
+pali = Palindroma(frase) 
+
+if (pali): 
+	print('es palindroma') 
+else: 
+	print('no es palindroma') 
+
+
+Ejercicio 7: Inverso de una palabra
+
+def inverso(frase):
+    return frase[::-1]
+print (inverso(input('Ingrese una palabra: ')))
